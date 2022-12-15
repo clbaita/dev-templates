@@ -46,6 +46,9 @@
           rust-analyzer
         ];
 
+        # Certain IDE's need this for extensions
+        RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+
         shellHook = ''
           ${pkgs.rustToolchain}/bin/cargo --version
         '';

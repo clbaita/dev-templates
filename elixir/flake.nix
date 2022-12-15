@@ -18,10 +18,10 @@
     in
     {
       devShells.default = pkgs.mkShell {
-        buildInputs = (with pkgs; [ elixir ]) ++
+        buildInputs = (with pkgs; [ elixir elixir_ls ]) ++
           pkgs.lib.optionals (pkgs.stdenv.isLinux) (with pkgs; [ gigalixir inotify-tools libnotify ]) ++ # Linux only
           pkgs.lib.optionals (pkgs.stdenv.isDarwin) ((with pkgs; [ terminal-notifier ]) ++ # macOS only
-          (with pkgs.darwin.apple_sdk.frameworks; [ CoreFoundation CoreServices ]));
+            (with pkgs.darwin.apple_sdk.frameworks; [ CoreFoundation CoreServices ]));
 
         shellHook = ''
           ${pkgs.elixir}/bin/mix --version
